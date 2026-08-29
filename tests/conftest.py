@@ -6,7 +6,7 @@ from src.product_class import Product
 @pytest.fixture
 def category(products1):
     return Category(
-        "Смартфоны",
+        "Смартфон",
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [products1])
 
