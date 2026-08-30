@@ -1,7 +1,11 @@
-from product_class import Product
+from src.product_class import Product
 
 
 class Category:
+    """
+    Класс содержащий категории продуктов
+    """
+
     name: str
     description: str
     products: list[Product]
