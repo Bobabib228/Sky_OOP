@@ -1,5 +1,5 @@
 import pytest
-from src.product_class import Product
+
 
 def test_product(product):
     assert product.name == "Samsung Galaxy S23 Ultra"
