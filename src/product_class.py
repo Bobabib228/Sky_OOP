@@ -23,10 +23,10 @@ class Product:
         return self.__price
 
     @product_price.setter
-    def product_price(self, value):
-        if value <= 0:
+    def product_price(self, val: float):
+        if val <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return self.__price
         else:
-            self.__price = value
+            self.__price = val
             return self.__price

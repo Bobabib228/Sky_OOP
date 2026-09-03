@@ -16,16 +16,14 @@ class Category:
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
 
         Category.category_count += 1
         Category.product_count += len(products)
 
     @property
-    def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
+    def product_info(self):
+        return [f"{p.name}, Цена: {p.product_price} руб., Остаток: {p.quantity} шт." for p in self.__products]
 
-    @add_product.getter
-    def add_product(self):
-        return self.__products
+
+
