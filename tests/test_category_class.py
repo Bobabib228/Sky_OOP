@@ -12,5 +12,3 @@ def test_category(category, product):
     assert category.products == [product]
     assert Category.category_count == 1
     assert Category.product_count == 1
-
-
