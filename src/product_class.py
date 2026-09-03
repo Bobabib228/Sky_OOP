@@ -9,7 +9,6 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @classmethod
     def new_product(cls, lst):
         return cls(lst["name"], lst["description"], lst["price"], lst["quantity"])
@@ -26,7 +25,3 @@ class Product:
         else:
             self.__price = value
             return self.__price
-
-
-
-
