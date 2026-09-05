@@ -23,7 +23,11 @@ class Category:
 
     @property
     def product_info(self):
-        return [f"{p.name}, Цена: {p.product_price} руб., Остаток: {p.quantity} шт." for p in self.__products]
+        lines = []
+        for p in self.__products:
+            lines.append(f"{p.name}, Цена: {p.product_price} руб., Остаток: {p.quantity} шт.")
+        return "\n".join(lines)
+
 
 
 
