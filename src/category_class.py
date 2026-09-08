@@ -22,7 +22,7 @@ class Category:
         Category.product_count += len(products)
 
     @property
-    def product_info(self):
+    def products(self):
         lines = []
         for p in self.__products:
             lines.append(f"{p.name}, Цена: {p.product_price} руб., Остаток: {p.quantity} шт.")
