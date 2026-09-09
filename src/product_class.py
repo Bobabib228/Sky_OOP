@@ -30,3 +30,14 @@ class Product:
         else:
             self.__price = val
             return self.__price
+
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
+
+
+
+pr1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 18000.0, 5)
+pr2 = Product("Iphone 13", "256GB, Серый цвет, super камера", 60000.0, 5)
+tr = pr1 + pr2
+print(tr)
