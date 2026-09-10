@@ -13,6 +13,6 @@ def test_category(category, product):
     assert Category.category_count == 1
     assert Category.product_count == 1
     category_str = str(category)
-    assert category_str == 'Samsung Galaxy S23 Ultra, Цена: 18000.0 руб., Остаток: 5 шт.'
+    assert category_str == 'Смартфон, количество продуктов: 1 шт.'
 
 
