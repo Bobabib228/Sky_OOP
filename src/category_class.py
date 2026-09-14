@@ -29,7 +29,7 @@ class Category:
         return "\n".join(lines)
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {Category.product_count} шт."
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
 
 
 
