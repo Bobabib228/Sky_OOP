@@ -22,14 +22,12 @@ class Category:
         Category.product_count += len(products)
 
     @property
-    def products(self):
-        lines = []
-        for p in self.__products:
-            lines.append(f"{p.name}, Цена: {p.product_price} руб., Остаток: {p.quantity} шт.")
-        return "\n".join(lines)
+    def products_list(self):
+        return "\n".join(str(product) for product in self.__products)
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+            total_quantity = sum(product.quantity for product in self.__products)
+            return f"{self.name}, количество продуктов: {total_quantity} шт."
 
 
 
