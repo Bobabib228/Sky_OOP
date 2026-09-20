@@ -5,13 +5,13 @@ class Product:
 
     name: str
     description: str
-    __price: float
+    _price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.__price = price
+        self._price = price
         self.quantity = quantity
 
     @classmethod
@@ -20,24 +20,39 @@ class Product:
 
     @property
     def product_price(self):
-        return self.__price
+        return self._price
 
     @product_price.setter
     def product_price(self, val: float):
         if val <= 0:
             print("Цена не должна быть нулевая или отрицательная")
-            return self.__price
+            return self._price
         else:
-            self.__price = val
-            return self.__price
+            self._price = val
+            return self._price
 
     def __add__(self, other):
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if type(self) != type(other):
+            raise TypeError
+        else:
+            return (self._price * self.quantity) + (other._price * other.quantity)
 
 
+class Smartphone(Product):
+
+    def __init__(self,name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
 
 
-pr1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 18000.0, 5)
-pr2 = Product("Iphone 13", "256GB, Серый цвет, super камера", 60000.0, 5)
-tr = pr1 + pr2
-print(tr)
+class LawnGrass(Product):
+
+    def __init__(self,name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+

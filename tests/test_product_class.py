@@ -1,5 +1,5 @@
 import pytest
-from src.product_class import Product
+from src.product_class import Product, Smartphone
 
 
 def test_product(product, product2, product_pattern, capsys):
@@ -20,4 +20,22 @@ def test_product(product, product2, product_pattern, capsys):
     assert product1.product_price == 10
     summ_product = product + product2
     assert summ_product == 390000.0
+
+
+def test_smartphone(smartphone1, smartphone2, product):
+    assert smartphone1.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone1.quantity == 5
+    assert smartphone1.description == "256GB, Серый цвет, 200MP камера"
+    assert smartphone1.color == "Серый"
+    assert smartphone1.product_price == 180000.0
+    summ_smartphone = smartphone1 + smartphone2
+    assert summ_smartphone == 2580000.0
+    with pytest.raises(TypeError):
+        print(smartphone1 + product)
+
+
+def test_lawngrass(lawngrass1):
+        assert lawngrass1.name == "Газонная трава"
+        assert lawngrass1.country == "Россия"
+        assert lawngrass1.germination_period == "7 дней"
 
