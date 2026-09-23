@@ -1,4 +1,23 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(self, name, description, price, quantity):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+
+
+class MixinRepr:
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(f"{self}")
+
+class Product(MixinRepr, BaseProduct):
     """
     Класс содержащий Продукты
     """
@@ -9,10 +28,14 @@ class Product:
     quantity: int
 
     def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self._price = price
-        self.quantity = quantity
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}("
+            f"{self.name!r}, {self.description!r}, "
+            f"{self.price}, {self.quantity})"
+        )
 
     @classmethod
     def new_product(cls, lst):
@@ -56,3 +79,6 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
+
+
+pr1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
