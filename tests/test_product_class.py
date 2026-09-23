@@ -1,5 +1,6 @@
 import pytest
-from src.product_class import Product, Smartphone
+from abc import ABC
+from src.product_class import Product, Smartphone, MixinRepr, BaseProduct
 
 
 def test_product(product, product2, product_pattern, capsys):
@@ -20,6 +21,7 @@ def test_product(product, product2, product_pattern, capsys):
     assert product1.product_price == 10
     summ_product = product + product2
     assert summ_product == 390000.0
+    assert Product.__mro__ == (Product, MixinRepr, BaseProduct, ABC, object)
 
 
 def test_smartphone(smartphone1, smartphone2, product):
@@ -35,7 +37,6 @@ def test_smartphone(smartphone1, smartphone2, product):
 
 
 def test_lawngrass(lawngrass1):
-        assert lawngrass1.name == "Газонная трава"
-        assert lawngrass1.country == "Россия"
-        assert lawngrass1.germination_period == "7 дней"
-
+    assert lawngrass1.name == "Газонная трава"
+    assert lawngrass1.country == "Россия"
+    assert lawngrass1.germination_period == "7 дней"

@@ -7,7 +7,7 @@ class BaseProduct(ABC):
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self._price = price
         self.quantity = quantity
 
 
@@ -16,6 +16,7 @@ class MixinRepr:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         print(f"{self}")
+
 
 class Product(MixinRepr, BaseProduct):
     """
@@ -31,11 +32,7 @@ class Product(MixinRepr, BaseProduct):
         super().__init__(name, description, price, quantity)
 
     def __repr__(self):
-        return (
-            f"{self.__class__.__name__}("
-            f"{self.name!r}, {self.description!r}, "
-            f"{self.price}, {self.quantity})"
-        )
+        return f"{self.__class__.__name__}(" f"{self.name!r}, {self.description!r}, " f"{self._price}, {self.quantity})"
 
     @classmethod
     def new_product(cls, lst):
@@ -63,7 +60,7 @@ class Product(MixinRepr, BaseProduct):
 
 class Smartphone(Product):
 
-    def __init__(self,name, description, price, quantity, efficiency, model, memory, color):
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -73,12 +70,12 @@ class Smartphone(Product):
 
 class LawnGrass(Product):
 
-    def __init__(self,name, description, price, quantity, country, germination_period, color):
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
 
 
-
-pr1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+mro = Product.__mro__
+print(f"{mro}")
