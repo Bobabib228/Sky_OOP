@@ -9,6 +9,8 @@ class BaseProduct(ABC):
         self.description = description
         self._price = price
         self.quantity = quantity
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
 
 
 class MixinRepr:
