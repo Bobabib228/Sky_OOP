@@ -40,3 +40,10 @@ def test_lawngrass(lawngrass1):
     assert lawngrass1.name == "Газонная трава"
     assert lawngrass1.country == "Россия"
     assert lawngrass1.germination_period == "7 дней"
+
+
+def test_prouct_add(product, product2,category):
+    with pytest.raises(TypeError) as err:
+        product + "34224"
+    with pytest.raises(TypeError) as err:
+        product + category

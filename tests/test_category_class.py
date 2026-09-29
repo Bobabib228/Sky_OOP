@@ -14,3 +14,11 @@ def test_category(category, product):
     assert Category.product_count == 1
     category_str = str(category)
     assert category_str == "Смартфон, количество продуктов: 5 шт."
+    product.quantity = 0
+    print(product.quantity)
+    assert category.middle_price() == 0
+
+
+def test_category_raises_add_product(category, product):
+    with pytest.raises(TypeError) as err:
+        category.add_product("ewrewr")

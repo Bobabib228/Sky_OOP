@@ -79,5 +79,4 @@ class LawnGrass(Product):
         self.color = color
 
 
-mro = Product.__mro__
-print(f"{mro}")
+
